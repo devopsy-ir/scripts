@@ -24,12 +24,12 @@ Also if you need use a tor bridge: <br/>
 7. torify curl -fsSL https://download.docker.com/linux/debian/gpg |  apt-key add -
 8. apt-key fingerprint 0EBFCD88
 9. add-apt-repository  "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs)  stable" 
-10. Change file /etc/apt/sources.list:
- Change 
-    deb [arch=amd64] https://download.docker.com/linux/debian buster stable
- into:
+10. Change file /etc/apt/sources.list: <br/>
+ Change  <br/>
+    deb [arch=amd64] https://download.docker.com/linux/debian buster stable <br/>
+ into: <br/>
      deb [arch=amd64] tor+https://download.docker.com/linux/debian buster stable
- 
+ <br/><br/>
 
 11. $ sudo apt-get update
 12. apt-get install docker-ce docker-ce-cli containerd.io
