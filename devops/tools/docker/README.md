@@ -10,11 +10,12 @@ HTTPSProxy 10.10.10.5:8080
 HTTPSProxyAuthenticator <username>:<password> 
 
 Also if you need use a tor bridge: <br/>
-##Bridge 
-#UseBridges 1 
-#ClientTransportPlugin obfs4 exec /usr/bin/obfs4proxy 
-#Bridge obfs4 185.220.101.40:55080 F49B663186705FEFF7B4776D086B8A81D1ED3F4F cert=p9L6+25s8bnfkye1ZxFeAE4mAGY7DH4Gaj7dxngIIzP9BtqrHHwZXdjMK0RVIQ34C7aqZw iat-mode=0
- 
+##Bridge <br/>
+#UseBridges 1 <br/>
+#ClientTransportPlugin obfs4 exec /usr/bin/obfs4proxy <br/>
+#Bridge obfs4 185.220.101.40:55080 F49B663186705FEFF7B4776D086B8A81D1ED3F4F cert=p9L6+25s8bnfkye1ZxFeAE4mAGY7DH4Gaj7dxngIIzP9BtqrHHwZXdjMK0RVIQ34C7aqZw iat-mode=0 
+ <br/>
+ <br/>
 
 3. apt install apt-transport-tor
 4. apt-get remove docker docker-engine docker.io containerd runc 
