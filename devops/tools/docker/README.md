@@ -9,7 +9,7 @@ HTTPSProxy 10.10.10.5:8080
  
 HTTPSProxyAuthenticator <username>:<password> 
 
-Also if you need use a tor bridge: 
+Also if you need use a tor bridge: <br/>
 ##Bridge 
 #UseBridges 1 
 #ClientTransportPlugin obfs4 exec /usr/bin/obfs4proxy 
