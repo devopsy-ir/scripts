@@ -1,0 +1,47 @@
+ExitNodes {cc1},{cc2}
+#ExcludeExitNodes {cc3},{cc4}
+StrictNodes 1
+
+#HTTPSProxy <ip>:<port>
+
+HTTPSProxy <ip>:<port>
+HTTPSProxyAuthenticator <user>:<pass>
+
+UseBridges 0
+#ClientTransportPlugin obfs3 exec /usr/bin/obfsproxy managed
+ClientTransportPlugin obfs4 exec /usr/bin/obfs4proxy managed
+
+# send email to bridges@torproject.org with body `get transport obfs4` you can get new bridges.
+bridge obfs4 207.180.234.231:9004 D906B473B3663DE6C91D5CD0EBF3B550B4A440C4 cert=cQRRsCGmvYwrp6D8MTCCw1pC8Bvq4OrbySY5FHL7Ahc5E5Vuk+uDnbWwCIJgHYjWKY+APw iat-mode=0
+bridge obfs4 185.220.101.245:12346 734333526A6974665B20334E80A2FAAEB08B9523 cert=p9L6+25s8bnfkye1ZxFeAE4mAGY7DH4Gaj7dxngIIzP9BtqrHHwZXdjMK0RVIQ34C7aqZw iat-mode=0
+bridge obfs4 2.221.78.163:2487 2563C0683242FDA2A620821B35BA00182A11CE67 cert=xelYkjVTY45G72AJqSZENWOpJQvt09/qtB0y92ipK2LChMWHClfYGpIzjJqR4JTh32iwAA iat-mode=0
+bridge obfs4 98.149.15.16:42786 9EB94D29047DBAEFF56035353D4306B732C79F05 cert=rLYOqY0szSm5HndAVNCVN1vxuEhOmdQp1vwLfrw+cQePBQbfmSnlOnyJzUGlQMQVtxegPg iat-mode=0
+
+# Brdiges
+##################
+#       COMMANDs: (combine COMMANDs to specify multiple options simultaneously)
+
+#               get bridges            Request vanilla bridges.
+#               get transport [TYPE]   Request a Pluggable Transport by TYPE.
+#               get help               Displays this message.
+#               get key                Get a copy of BridgeDB's public GnuPG key.
+#               get ipv6               Request IPv6 bridges.
+#       Currently supported transport TYPEs:
+
+#                           fte
+
+#                          obfs3
+
+#                          obfs4
+
+#                         scramblesuit
+#NOTE:The minimum time between emails is 3 hours. All further emails during this time period will be ignored.
+
+#       Example :
+
+#       To:bridges@torproject.org
+
+#       body: get bridges
+
+#       Send !
+##################
