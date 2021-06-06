@@ -1,0 +1,60 @@
+---
+#FROM: https://gist.github.com/lutangar/65bff40dc61d8c48c3eb8ab179d21d11#file-docker-ce-yml
+
+- name: Update the `apt` package index
+  apt:
+    update_cache: yes
+
+- name: Install packages to allow apt to use a repository over HTTPS
+  package:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - apt-transport-https
+    - curl
+    - software-properties-common
+
+- name: Install `easy_install` to install `pip`
+  package:
+    name: python-setuptools
+    state: present
+
+- name: Install `pip` to install `docker-py`
+  easy_install:
+    name: pip
+    state: latest
+
+- name: Install `docker-py` for the Ansible Docker module
+  pip:
+    name: "{{ item }}"
+  with_items:
+    - docker-py
+#    - docker-compose
+
+- name: Add Docker’s official GPG key
+  apt_key:
+    url: "https://download.docker.com/linux/{{ ansible_distribution | lower }}/gpg"
+    state: present
+
+- name: Register distribution *short* code name
+  shell: lsb_release -cs
+  register: lsb_release
+
+- name: Set up the stable repository
+  apt_repository:
+    repo: "deb [arch=amd64] https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release | lower }} stable"
+    state: present
+
+- name: Update the `apt` package index
+  apt:
+    update_cache: yes
+
+- name: Install Docker CE
+  package:
+    name: docker-ce
+    state: present
+
+- name: Verify that Docker CE is installed correctly by running the hello-world image
+  command: docker run hello-world
+  register: command_result
+  failed_when: "'Hello from Docker!' not in command_result.stdout"
