@@ -1,2 +1,4 @@
 #Rename docker image and push it and remove it!
 for i in $(docker images | awk '{ printf("%s:%s\n",$1,$2) }' | tail -n +2); do [[ $i =~ ^docker\.example\.com/.* ]] && docker tag $i $(echo $i | sed -E 's#^docker\.example\.com/(.*)$#docker.example.ir/\1#g' ) && docker rmi $i && docker push $(echo $i | sed -E 's#^docker\.example\.com/(.*)$#docker.example.ir/\1#g' ) && docker rmi $(echo $i | sed -E 's#^docker\.example\.com/(.*)$#docker.example.ir/\1#g' ); done
+
+for i in $(docker images | awk '{ printf("%s:%s\n",$1,$2) }' | tail -n +2 | sed -E 's#^docker\.example\.ir/(.*)$#\1#g' | sed -E 's#^dockery\.example\.ir/(.*)$#\1#g' | sed -E 's#^docker\.example\.org/(.*)$#\1#g' | sed '/<none>/d'); do echo $i && docker tag $i dockery.example.ir/$i && docker rmi $i && docker push dockery.example.ir/$i && docker rmi dockery.example.ir/$i; done
