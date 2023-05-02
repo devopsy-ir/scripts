@@ -8,11 +8,11 @@ spec:
     matchLabels:
       app: demo
   template:
-     metadata:
-       labels:
-         app: demo
-         env: dev
-     spec:
-       containers:
-       - name: demo
-         image: nginx:latest
+    metadata:
+      labels:
+        app: demo
+        env: dev
+    spec:
+      containers:
+      - name: demo
+        image: nginx:latest
