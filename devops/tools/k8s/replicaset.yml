@@ -15,4 +15,4 @@ spec:
      spec:
        containers:
        - name: demo
-         image: nginx: latest
+         image: nginx:latest
